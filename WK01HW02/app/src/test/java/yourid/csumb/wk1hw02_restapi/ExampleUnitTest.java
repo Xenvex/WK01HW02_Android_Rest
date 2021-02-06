@@ -1,4 +1,4 @@
-package yourid.csumb.wk01hw02;
+package yourid.csumb.wk1hw02_restapi;
 
 import org.junit.Test;
 

@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "WK01HW02"
+rootProject.name = "WK1HW02_RestAPI"
