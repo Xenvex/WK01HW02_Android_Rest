@@ -3,6 +3,7 @@ package yourid.csumb.wk1hw02_restapi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("Log", "OnCreateSucessful");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 //Returns a list of posts from the JSON array
 
                 for (Post post : posts) {
+                    Log.i("Log", "Retrieval Successful!");
                     String content = "";
                     content += "ID: " + post.getId() + "\n";
                     content += "User ID: " + post.getUserId() + "\n";
