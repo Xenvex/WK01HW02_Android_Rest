@@ -1,5 +1,6 @@
 package yourid.csumb.wk1hw02_restapi;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements Intention{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -32,38 +33,49 @@ public class LoginActivity extends AppCompatActivity {
 
                //Verifying Credentials
                //Username: din_djarin  Password: baby_yoda_ftw
-               if(name.equals("din_djarin") && pw.equals("baby_yoda_ftw"))
-               {
-                   //Successful Login
-                   //Transition to Main Activity
-                   Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                   startActivity(intent);
 
-               }
-               else
-               {
-                   //Unsuccessful Login
-                   //Display an Error Message
-                   if(!name.equals("din_djarin") && !pw.equals("baby_yoda_ftw")){
-                       //Username and Password are Wrong
-                       TextView msg = findViewById(R.id.message);
-                       msg.setText("Incorrect Username and Password");
-                   }
-                   else if(!pw.equals("baby_yoda_ftw")){
-                       //Just Password is Wrong
-                       TextView msg = findViewById(R.id.message);
-                       msg.setText("Incorrect Password");
-                   }
-                   else if(!name.equals("din_djarin")){
-                       //Just Username is Wrong
-                       TextView msg = findViewById(R.id.message);
-                       msg.setText("Incorrect Username");
-                   }
-
-
-               }
+                Authenticate(name, pw);
 
            }
         });
+    }
+
+    //Method to Authenticate Credentials
+    public void Authenticate(String username, String password){
+        Log.i("Log Message", "Authenticate Function is being Run");
+        if(username.equals("din_djarin") && password.equals("baby_yoda_ftw"))
+        {
+            //Successful Login
+            //Transition to Main Activity
+            Teleport(LoginActivity.this, MainActivity.class);
+        }
+        else
+        {
+            //Unsuccessful Login
+            //Display an Error Message
+            if(!username.equals("din_djarin") && !password.equals("baby_yoda_ftw")){
+                //Username and Password are Wrong
+                TextView msg = findViewById(R.id.message);
+                msg.setText("Incorrect Username and Password");
+            }
+            else if(!password.equals("baby_yoda_ftw")){
+                //Just Password is Wrong
+                TextView msg = findViewById(R.id.message);
+                msg.setText("Incorrect Password");
+            }
+            else if(!username.equals("din_djarin")){
+                //Just Username is Wrong
+                TextView msg = findViewById(R.id.message);
+                msg.setText("Incorrect Username");
+            }
+
+
+        }
+    }
+
+    @Override
+    public void Teleport(Context Start, Class Destination) {
+        android.content.Intent intent = new android.content.Intent(Start, Destination);
+        startActivity(intent);
     }
 }
