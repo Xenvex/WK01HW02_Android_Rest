@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("Log", "OnCreateSucessful");
+        Log.i("Log Message", "OnCreateSucessful");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
         //network request
         Call<List<Post>> call = jsonPlaceHolderAPI.getPosts();
 
+        Log.i("Log Message", "Call being requested");
         call.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-
+                Log.i("Log Message", "Response is Happening");
                 if (!response.isSuccessful()){
                     //if not successful, this shows us what went wrong
                     textViewResult.setText("Code: " + response.code());
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 //Returns a list of posts from the JSON array
 
                 for (Post post : posts) {
-                    Log.i("Log", "Retrieval Successful!");
+                    Log.i("Log Message", "Retrieval Successful!");
                     String content = "";
                     content += "ID: " + post.getId() + "\n";
                     content += "User ID: " + post.getUserId() + "\n";
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             //or something went wrong with the response
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
+                Log.i("Log Message", "Response Failed");
                 textViewResult.setText(t.getMessage());
             }
         });
