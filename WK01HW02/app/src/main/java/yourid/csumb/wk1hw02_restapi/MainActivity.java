@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,10 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
         textViewResult = findViewById(R.id.text_view_result);
 
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
         Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://jobs.github.com/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build();
+
 
         JsonPlaceHolderAPI jsonPlaceHolderAPI = retrofit.create(JsonPlaceHolderAPI.class);
 
@@ -53,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
                 for (Post post : posts) {
                     Log.i("Log Message", "Retrieval Successful!");
                     String content = "";
-                    content += "ID: " + post.getId() + "\n";
-                    content += "User ID: " + post.getUserId() + "\n";
-                    content += "Title: " + post.getTitle() + "\n";
-                    content += "Text: " + post.getText() + "\n\n";
+                    //content += "ID: " + post.getId() + "\n";
+                    //content += "User ID: " + post.getUserId() + "\n";
+                    content += "Job Title: " + post.getTitle() + "\n";
+                    //content += "Text: " + post.getText() + "\n\n";
 
                     textViewResult.append(content);
                 }

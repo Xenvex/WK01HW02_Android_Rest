@@ -4,29 +4,29 @@ import com.google.gson.annotations.SerializedName;
 
 public class Post {
     //Declaring Initial Variables
-    private int userId;
+    //private int userId;
 
-    private int id;
+    //private int id;
 
     private String title;
 
-    @SerializedName("body")
-    private String text;
+    //@SerializedName("body")
+    //private String text;
 
     //Generated Getter Methods
-    public int getUserId() {
-        return userId;
-    }
+    //public int getUserId() {
+    //    return userId;
+    //}
 
-    public int getId() {
-        return id;
-    }
+    //public int getId() {
+    //    return id;
+    //}
 
     public String getTitle() {
         return title;
     }
 
-    public String getText() {
-        return text;
-    }
+    //public String getText() {
+    //    return text;
+    //}
 }
