@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements Intention{
 
                //Verifying Credentials
                //Username: din_djarin  Password: baby_yoda_ftw
-                //Testing
+                //Testing Again
                 Authenticate(name, pw);
 
            }
